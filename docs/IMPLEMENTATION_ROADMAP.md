@@ -287,4 +287,3 @@
 - Dependency tracking
 - Security scanning
 - Multi-language support
-
