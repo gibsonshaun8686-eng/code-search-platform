@@ -1,0 +1,55 @@
+{
+  "name": "code-search-platform",
+  "version": "0.1.0",
+  "description": "Professional code search platform with advanced GitHub Code Search syntax support",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\" \"npm run dev --workspace=indexing-service\"",
+    "build": "npm run build --workspaces",
+    "test": "jest --projects <(echo '{\"displayName\":\"frontend\",\"testMatch\":[\"**/frontend/**/*.test.ts*\"]}') <(echo '{\"displayName\":\"backend\",\"testMatch\":[\"**/backend/**/*.test.ts*\"]}')",
+    "test:coverage": "jest --coverage --projects <(echo '{\"displayName\":\"frontend\",\"testMatch\":[\"**/frontend/**/*.test.ts*\"]}') <(echo '{\"displayName\":\"backend\",\"testMatch\":[\"**/backend/**/*.test.ts*\"]}')",
+    "test:watch": "jest --watch --projects <(echo '{\"displayName\":\"frontend\",\"testMatch\":[\"**/frontend/**/*.test.ts*\"]}') <(echo '{\"displayName\":\"backend\",\"testMatch\":[\"**/backend/**/*.test.ts*\"]}')",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "migrate": "cd backend && npm run migrate",
+    "migrate:create": "cd backend && npm run migrate:create",
+    "seed": "cd backend && npm run seed",
+    "docker:build": "docker-compose -f docker/docker-compose.yml build",
+    "docker:up": "docker-compose -f docker/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f docker/docker-compose.yml down",
+    "docker:logs": "docker-compose -f docker/docker-compose.yml logs -f"
+  },
+  "workspaces": [
+    "frontend",
+    "backend",
+    "indexing-service"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.40.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "code-search",
+    "code-intelligence",
+    "developer-tools",
+    "github",
+    "semantic-search",
+    "symbol-navigation"
+  ],
+  "author": "Code Search Platform Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gibsonshaun8686-eng/code-search-platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gibsonshaun8686-eng/code-search-platform/issues"
+  },
+  "homepage": "https://github.com/gibsonshaun8686-eng/code-search-platform#readme"
+}
